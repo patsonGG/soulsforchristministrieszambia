@@ -1,0 +1,429 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>SOULS FORCHRIST MINISTRIES </title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<style>
+/* ==== COLORS ==== */
+:root {
+    --blue: #0b5ed7;
+    --yellow: #ffc107;
+    --dark: #0a1a2f;
+    --light: #f8f9fa;
+}
+
+/* ==== GLOBAL ==== */
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background: url("stt.jpg") center/cover fixed no-repeat;
+}
+
+body::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.6);
+    z-index: -1;
+}
+
+header, footer {
+    background: var(--dark);
+    color: white;
+    text-align: center;
+    padding: 15px;
+}
+
+nav {
+    background: var(--blue);
+    display: flex;
+    justify-content: center;  /* center the nav horizontally */
+    align-items: center;      /* vertically center the buttons */
+    gap: 10px;                /* space between buttons */
+    flex-wrap: wrap;           /* wrap on smaller screens */
+}
+
+nav button {
+    background: var(--yellow);
+    color: var(--dark);
+    border: none;
+    padding: 10px 15px;
+    font-weight: bold;
+    cursor: pointer;
+    white-space: nowrap;       /* keep text on one line */
+    transition: transform 0.2s ease;
+}
+
+nav button:hover {
+    background: #ffcd39;
+    transform: scale(1.05);
+}
+
+@media (max-width: 768px) {
+    nav {
+    background: var(--blue);
+    display: flex;             /* flex container */
+    justify-content: center;   /* center items horizontally */
+    align-items: center;       /* center items vertically */
+    gap: 10px;                 /* spacing between buttons */
+    flex-wrap: wrap;           /* wrap on smaller screens */
+}
+
+nav button {
+    display: inline-flex;      /* ensure buttons are horizontal, not block */
+    background: var(--yellow);
+    color: var(--dark);
+    border: none;
+    padding: 10px 15px;
+    font-weight: bold;
+    cursor: pointer;
+    white-space: nowrap;       /* keep text on one line */
+    transition: transform 0.2s ease;
+}
+
+nav button:hover {
+    background: #ffcd39;
+    transform: scale(1.05);
+}
+
+/* MOBILE */
+@media (max-width: 768px) {
+    nav {
+        display: none;          /* hide menu on mobile */
+        flex-direction: column; /* vertical menu when active */
+        width: 100%;
+    }
+
+    nav.active {
+        display: flex;
+    }
+
+    nav button {
+        width: 100%;
+        margin: 5px 0;
+    }
+
+    .menu-btn {
+        display: block;
+    }
+}
+
+}
+
+
+nav button {
+    background: var(--yellow);
+    border: none;
+    padding: 10px 15px;
+    font-weight: bold;
+    cursor: pointer;
+    white-space: nowrap;
+    transition: transform 0.2s ease;
+}
+
+nav button:hover {
+    background: #ffcd39;
+    transform: scale(1.05);
+}
+
+.menu-btn {
+    display: none;
+    background: var(--yellow);
+    border: none;
+    font-size: 22px;
+    margin: 10px;
+}
+
+main {
+    max-width: 900px;
+    margin: auto;
+    padding: 20px;
+}
+
+section {
+    display: none;
+    background: var(--light);
+    padding: 20px;
+    border-radius: 8px;
+    animation: fade 0.5s ease;
+}
+
+section.active {
+    display: block;
+}
+
+@keyframes fade {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+input, textarea, button {
+    padding: 10px;
+    width: 100%;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.comment, .testimony {
+    border-bottom: 1px solid #ddd;
+    padding: 10px 0;
+}
+
+/* HERO SLIDER */
+.hero {
+    text-align: center;
+    padding: 30px 20px;
+    margin-bottom: 20px;
+}
+
+.hero h2 { font-size: 32px; margin-bottom: 10px; }
+.hero p { font-size: 18px; max-width: 600px; margin: auto; }
+.hero-buttons { margin-top: 20px; }
+.hero-buttons button { margin: 5px; padding: 12px 20px; font-size: 16px; }
+
+.slider { position: relative; height: 280px; overflow: hidden; border-radius: 12px; margin-bottom: 20px; }
+.slide { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; opacity: 0; transition: opacity 1s ease; }
+.slide.active { opacity: 1; }
+
+/* HIGHLIGHTS */
+.highlights { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 15px; margin-bottom: 30px; }
+.card { background: #f9f9f9; padding: 20px; border-radius: 8px; text-align: center; border-top: 5px solid var(--blue); transition: transform 0.2s ease; }
+.card:hover { transform: translateY(-5px); }
+
+/* VIDEO */
+.video-section { text-align: center; margin: 40px 0; }
+.video-wrapper { position: relative; padding-top: 56.25%; max-width: 800px; margin: auto; }
+.video-wrapper iframe { position: absolute; inset: 0; width: 100%; height: 100%; border-radius: 12px; border: 4px solid var(--blue); }
+
+/* IMAGE GALLERY */
+.image-gallery { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 10px; margin-top: 30px; }
+.image-gallery img { width: 100%; height: 150px; object-fit: cover; border-radius: 10px; transition: transform 0.3s ease; }
+.image-gallery img:hover { transform: scale(1.05); }
+
+/* MOBILE */
+@media (max-width: 768px) {
+    nav { display: none; flex-direction: column; width: 100%; }
+    nav.active { display: flex; }
+    nav button { width: 100%; margin: 5px 0; }
+    .menu-btn { display: block; }
+}
+</style>
+</head>
+
+<body>
+
+<header>
+    <h1>🌍 SOULS FOR CHRIST MINISTRIES </h1>
+    <button class="menu-btn" onclick="toggleMenu()">☰</button>
+</header>
+
+<nav id="menu">
+    <button onclick="showPage('home')">Home</button>
+    <button onclick="showPage('about')">About</button>
+    <button onclick="showPage('donation')">Donation</button>
+    <button onclick="showPage('testimonies')">Testimonies</button>
+    <button onclick="showPage('contact')">Contact</button>
+</nav>
+
+
+<main>
+
+<!-- HOME -->
+<section id="home" class="active">
+
+    <!-- HERO -->
+    <div class="hero">
+        <div class="slider">
+            <img src="stt.jpg" class="slide active">
+            <img src="stt.jpg" class="slide">
+            <img src="stt.jpg" class="slide">
+        </div>
+
+        <h2>Welcome to Our Community</h2>
+        <p>Sharing the good news, testimonies, hope, and support across the world.</p>
+
+        <div class="hero-buttons">
+            <button onclick="showPage('about')">Learn More</button>
+            <button onclick="showPage('donation')">Donate Now</button>
+        </div>
+    </div>
+
+    <!-- HIGHLIGHTS -->
+    <div class="highlights">
+        <div class="card"><h3>🌱 Our Mission</h3><p>Empowering people through preaching, testimonies, and deliverance.</p></div>
+        <div class="card"><h3>🤝 Community</h3><p>Connecting individuals worldwide to share experiences and hope.</p></div>
+        <div class="card"><h3>💖 Impact</h3><p>Donations and stories that change lives for the better.</p></div>
+    </div>
+
+    <!-- VIDEO -->
+    <div class="video-section">
+        <h2>Watch Our Stories</h2>
+        <div class="video-wrapper">
+            <iframe width="315" height="576" src="https://www.youtube.com/embed/wkU8n7PrcOI" title="abasumina bena bakengira tondolo" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+        </div>
+    </div>
+
+    <!-- IMAGE GALLERY -->
+    <div class="image-gallery">
+        <img src="chi.jpg">
+        <img src="chch.jpg">
+        <img src="chilu.jpg">
+        <img src="cch.jpg">
+    </div>
+
+    <!-- NEWS -->
+    <h2>Latest News</h2>
+    <article>
+        <h3>Community Growth</h3>
+        <p>Our platform continues to reach and inspire people across the world.</p>
+    </article>
+
+    <!-- COMMENTS -->
+    <h2>Community Comments</h2>
+    <form id="commentForm">
+        <input id="username" placeholder="Your name" required>
+        <textarea id="commentText" placeholder="Share your thoughts..." required></textarea>
+        <button>Post Comment</button>
+    </form>
+    <div id="commentList"></div>
+</section>
+
+<!-- ABOUT -->
+<section id="about">
+<h2>About Us</h2>
+<p>We are a community-driven platform spreading hope, testimonies, and deliverance across the globe.</p>
+<iframe src="https://www.facebook.com/plugins/video.php?height=476&href=https%3A%2F%2Fwww.facebook.com%2F100068789642989%2Fvideos%2F1423217796100555%2F&show_text=true&width=267&t=0" width="267" height="591" style="border:none;overflow:hidden" scrolling="no" frameborder="0" allowfullscreen="true" allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share" allowFullScreen="true"></iframe>
+
+<iframe src="https://www.facebook.com/plugins/video.php?height=476&href=https%3A%2F%2Fwww.facebook.com%2Freel%2F1855994718422380%2F&show_text=true&width=267&t=0" width="267" height="591" style="border:none;overflow:hidden" scrolling="no" frameborder="0" allowfullscreen="true" allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share" allowFullScreen="true"></iframe>
+
+<iframe src="https://www.facebook.com/plugins/video.php?height=476&href=https%3A%2F%2Fwww.facebook.com%2F100068789642989%2Fvideos%2F2698545173833060%2F&show_text=true&width=267&t=0" width="267" height="591" style="border:none;overflow:hidden" scrolling="no" frameborder="0" allowfullscreen="true" allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share" allowFullScreen="true"></iframe>
+</section>
+
+<!-- DONATION -->
+<section id="donation">
+<h2> This feature is yet to be active </h2>
+
+<!-- PayPal -->
+<form action="https://www.paypal.com/donate" method="post" target="_blank">
+<input type="hidden" name="business" value="youremail@example.com">
+<input type="hidden" name="currency_code" value="USD">
+<button>Donate with PayPal</button>
+</form>
+
+<p><strong> This feature is yet to be active :</strong><br>Number: 07799XXXXX<br>Name: SOULS FOR CHRIST MINISTRIES ZAMBIA</p>
+</section>
+
+<!-- TESTIMONIES -->
+<section id="testimonies">
+<h2>Testimonies</h2>
+
+<form id="testimonyForm">
+<input id="testName" placeholder="Your name" required>
+<textarea id="testMessage" placeholder="Your testimony" required></textarea>
+<button>Submit Testimony</button>
+</form>
+
+<button onclick="adminLogin()">Admin Login</button>
+<div id="testimonyList"></div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+<h2>Contact Us</h2>
+
+<form onsubmit="sendMessage(event)">
+<input id="contactName" placeholder="Your name" required>
+<textarea id="contactMessage" placeholder="Message" required></textarea>
+<button>Send Message</button>
+</form>
+
+<p>Email: georgeshandila@gmail.com</p>
+<p>WhatsApp: +260776449564</p>
+</section>
+
+</main>
+
+<footer>
+<p>© 2026 Souls For Christ Ministries Zambia</p>
+</footer>
+
+<!-- ===== FIREBASE COMMENTS & TESTIMONIES ===== -->
+<script type="module">
+import { initializeApp } from "https://www.gstatic.com/firebasejs/9.23.0/firebase-app.js";
+import { getFirestore, collection, addDoc, onSnapshot, deleteDoc, doc } from "https://www.gstatic.com/firebasejs/9.23.0/firebase-firestore.js";
+
+const firebaseConfig = {
+    /* YOUR_FIREBASE_CONFIG */
+};
+
+const app = initializeApp(firebaseConfig);
+const db = getFirestore(app);
+
+const commentsRef = collection(db, "comments");
+const testimonyRef = collection(db, "testimonies");
+
+const commentList = document.getElementById("commentList");
+const testimonyList = document.getElementById("testimonyList");
+const commentForm = document.getElementById("commentForm");
+const testimonyForm = document.getElementById("testimonyForm");
+
+onSnapshot(commentsRef, snap => {
+    commentList.innerHTML = "";
+    snap.forEach(d => {
+        const c = d.data();
+        commentList.innerHTML += `<div class="comment"><strong>${c.name}</strong><p>${c.text}</p></div>`;
+    });
+});
+
+commentForm.addEventListener("submit", async e => {
+    e.preventDefault();
+    await addDoc(commentsRef, { name: username.value, text: commentText.value });
+    commentForm.reset();
+});
+
+onSnapshot(testimonyRef, snap => {
+    testimonyList.innerHTML = "";
+    snap.forEach(d => {
+        const t = d.data();
+        let del = localStorage.getItem("admin") === "true"
+            ? `<button onclick="deleteTestimony('${d.id}')">Delete</button>`
+            : "";
+        testimonyList.innerHTML += `<div class="testimony"><p>"${t.message}"</p><strong>- ${t.name}</strong>${del}</div>`;
+    });
+});
+
+
+window.deleteTestimony = async id => { await deleteDoc(doc(db, "testimonies", id)); };
+testimonyForm.addEventListener("submit", async e => {
+    e.preventDefault();
+    await addDoc(testimonyRef, { name: testName.value, message: testMessage.value });
+    testimonyForm.reset();
+});
+</script>
+
+<script>
+// NAVIGATION
+function showPage(id) { document.querySelectorAll("section").forEach(s => s.classList.remove("active")); document.getElementById(id).classList.add("active"); menu.classList.remove("active"); }
+function toggleMenu() { menu.classList.toggle("active"); }
+
+// ADMIN LOGIN
+function adminLogin() { const p = prompt("Admin password:"); if (p === "214587") { localStorage.setItem("admin", "true"); alert("Admin enabled"); } }
+
+// CONTACT FORM
+function sendMessage(e) { e.preventDefault(); const text = `Name: ${contactName.value}\n${contactMessage.value}`; window.open(`mailto:georgeshandila@gmail.com?body=${encodeURIComponent(text)}`); window.open(`https://wa.me/260776449564?text=${encodeURIComponent(text)}`); }
+
+// SLIDER
+let slides = document.querySelectorAll(".slide");
+let index = 0;
+setInterval(() => { slides[index].classList.remove("active"); index = (index + 1) % slides.length; slides[index].classList.add("active"); }, 4000);
+</script>
+
+</body>
+</html>
++1234567890
