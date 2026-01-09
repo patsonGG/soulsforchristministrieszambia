@@ -321,17 +321,21 @@ form {
 
 <!-- TESTIMONIES -->
 <section id="testimonies">
-<h2>Testimonies</h2>
+    <h2>Testimonies</h2>
+    <p>Share what God has done in your life.</p>
 
-<form id="testimonyForm">
-<input id="testName" placeholder="Your name" required>
-<textarea id="testMessage" placeholder="Your testimony" required></textarea>
-<button>Submit Testimony</button>
-</form>
+    <!-- FORM -->
+    <form id="testimonyForm">
+        <input id="testName" placeholder="Your Name" required>
+        <textarea id="testMessage" placeholder="Your Testimony" required></textarea>
+        <button type="submit">Submit Testimony</button>
+    </form>
 
-<button onclick="adminLogin()">Admin Login</button>
-<div id="testimonyList"></div>
+    <!-- THIS IS THE BOTTOM AREA -->
+    <h3>Submitted Testimonies</h3>
+    <div id="testimonyList"></div>
 </section>
+
 
 <!-- CONTACT -->
 <section id="contact">
@@ -395,6 +399,45 @@ onSnapshot(testimonyRef, snap => {
             ? `<button onclick="deleteTestimony('${d.id}')">Delete</button>`
             : "";
         testimonyList.innerHTML += `<div class="testimony"><p>"${t.message}"</p><strong>- ${t.name}</strong>${del}</div>`;
+        testimonyForm.addEventListener("submit", async e => {
+    e.preventDefault();
+
+    await addDoc(testimonyRef, {
+        name: testName.value,
+        message: testMessage.value,
+        timestamp: Date.now()
+    });
+
+    testimonyForm.reset();
+});
+onSnapshot(testimonyRef, snap => {
+    testimonyList.innerHTML = "";
+
+    let testimonies = [];
+
+    snap.forEach(docSnap => {
+        testimonies.push({
+            id: docSnap.id,
+            ...docSnap.data()
+        });
+    });
+
+    // SORT OLDEST FIRST → NEWEST LAST
+    testimonies.sort((a, b) => a.timestamp - b.timestamp);
+
+    testimonies.forEach(t => {
+        const isAdmin = localStorage.getItem("admin") === "true";
+
+        testimonyList.innerHTML += `
+            <div class="testimony">
+                <p>"${t.message}"</p>
+                <strong>— ${t.name}</strong>
+                ${isAdmin ? `<button onclick="deleteTestimony('${t.id}')">Delete</button>` : ""}
+            </div>
+        `;
+    });
+});
+
     });
 });
 
@@ -428,3 +471,4 @@ setInterval(() => { slides[index].classList.remove("active"); index = (index + 1
 </html>
 
 +1234567890
+
