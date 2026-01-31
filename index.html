@@ -1,0 +1,360 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Souls for Christ Ministries</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      font-family: 'Segoe UI', Arial, sans-serif;
+      color: #fff;
+      background: url('mamas.jpeg') no-repeat center center fixed;
+      background-size: cover;
+      min-height: 100vh;
+    }
+
+    .overlay {
+      background: rgba(0,0,0,0.75);
+      min-height: 100vh;
+    }
+
+    /* HEADER */
+    header {
+      position: relative;
+      background: url('WhatsApp Image 2026-01-22 at 12.02.45 PM.jpeg') no-repeat center;
+      background-size: cover;
+      padding: 100px 20px 80px;
+      text-align: center;
+    }
+
+    header h1 {
+      font-size: 3.2em;
+      margin-bottom: 10px;
+    }
+
+    header p {
+      font-size: 1.3em;
+      opacity: 0.95;
+    }
+
+    /* FIXED MENU BUTTON */
+    .menu-btn {
+      position: fixed;
+      top: 15px;
+      left: 15px;
+      font-size: 30px;
+      cursor: pointer;
+      color: #fff;
+      background: rgba(0,0,0,0.6);
+      padding: 8px 12px;
+      border-radius: 6px;
+      z-index: 2000;
+    }
+
+    /* NAV MENU */
+    nav {
+      position: fixed;
+      top: 60px;
+      left: 15px;
+      z-index: 1500;
+    }
+
+    ul.nav-links {
+      list-style: none;
+      display: none;
+      gap: 10px;
+      flex-wrap: wrap;
+      background: rgba(0,0,0,0.9);
+      padding: 10px;
+      border-radius: 8px;
+    }
+
+    ul.nav-links.show {
+      display: flex;
+      flex-direction: row;
+    }
+
+    ul.nav-links li {
+      padding: 10px 16px;
+      background: #222;
+      border-radius: 6px;
+      cursor: pointer;
+      white-space: nowrap;
+    }
+
+    ul.nav-links li:hover {
+      background: #444;
+    }
+
+    /* SECTIONS */
+    section {
+      padding: 70px 20px;
+      max-width: 1100px;
+      margin: auto;
+      display: none;
+    }
+
+    section.active { display: block; }
+
+    h2 {
+      text-align: center;
+      margin-bottom: 25px;
+      font-size: 2.2em;
+    }
+
+    p, li {
+      line-height: 1.8;
+      margin-bottom: 12px;
+      font-size: 1.05em;
+    }
+
+    .card {
+      background: rgba(255,255,255,0.1);
+      padding: 24px;
+      border-radius: 10px;
+      margin-bottom: 25px;
+    }
+
+    input, textarea {
+      width: 100%;
+      padding: 12px;
+      margin: 8px 0;
+      border-radius: 6px;
+      border: none;
+    }
+
+    button {
+      padding: 10px 20px;
+      background: #1e90ff;
+      border: none;
+      color: #fff;
+      border-radius: 6px;
+      cursor: pointer;
+      margin-top: 10px;
+    }
+
+    button:hover { background: #0f5fb3; }
+
+    img, video {
+      max-width: 100%;
+      margin-top: 12px;
+      border-radius: 6px;
+    }
+
+    .admin-panel {
+      background: rgba(0,0,0,0.9);
+      padding: 22px;
+      border-radius: 10px;
+      margin-top: 30px;
+    }
+
+    a {
+      color: #7ec8ff;
+      text-decoration: none;
+    }
+
+    a:hover { text-decoration: underline; }
+  </style>
+</head>
+<body>
+<div class="overlay">
+
+  <!-- FIXED MENU BUTTON -->
+  <div class="menu-btn" onclick="toggleMenu()">☰</div>
+
+  <!-- NAVIGATION -->
+  <nav>
+    <ul class="nav-links" id="navLinks">
+      <li onclick="showSection('home')">Home</li>
+      <li onclick="showSection('about')">About</li>
+      <li onclick="showSection('mission')">Mission & Vision</li>
+      <li onclick="showSection('testimonies')">Testimonies</li>
+      <li onclick="showSection('contact')">Contact</li>
+      <li onclick="showSection('location')">Location</li>
+      <li onclick="adminLogin()">Login</li>
+    </ul>
+  </nav>
+
+  <!-- HEADER -->
+  <header>
+    <h1>Souls for Christ Ministries</h1>
+    <p>Winning Souls • Making Disciples • Transforming Nations</p>
+  </header>
+
+  <!-- HOME -->
+  <section id="home" class="active">
+    <h2>Welcome</h2>
+    <div class="card">
+      <p>Souls for Christ Ministries is a Christ-centered ministry devoted to evangelism, discipleship, prayer, and community transformation through the power of the Holy Spirit.</p>
+      <p>We welcome people from all walks of life to experience salvation, healing, restoration, and purpose in Jesus Christ.</p>
+      <img src="ob.jpg" alt="">
+    </div>
+  </section>
+
+  <!-- ABOUT -->
+  <section id="about">
+    <h2>About Us</h2>
+    <div class="card">
+      <p>Our ministry was founded with a divine mandate to reach the lost, teach the uncompromised Word of God, and raise spiritually mature believers.</p>
+      <p>We believe in the authority of Scripture, salvation through Jesus Christ alone, and the power of the Holy Spirit.</p>
+    </div>
+  </section>
+
+  <!-- MISSION -->
+  <section id="mission">
+    <h2>Mission & Vision</h2>
+    <div class="card">
+      <ul>
+        <li><strong>Mission:</strong> To win souls for Christ and disciple believers worldwide.</li>
+        <li><strong>Vision:</strong> A transformed generation grounded in Christ.</li>
+        <li><strong>Core Values:</strong> Faith, Prayer, Love, Integrity, Deliverance.</li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- TESTIMONIES -->
+  <section id="testimonies">
+    <h2>Testimonies</h2>
+    <div id="approvedTestimonies"></div>
+
+    <div class="card">
+      <h3>Submit Your Testimony</h3>
+      <input id="name" placeholder="Your Name" />
+      <textarea id="testimonyText" placeholder="Write your testimony..."></textarea>
+      <label>Upload Image or Video:</label>
+      <input type="file" id="media" accept="image/*,video/*" />
+      <button onclick="submitTestimony()">Submit for Approval</button>
+    </div>
+    <iframe src="https://www.facebook.com/plugins/post.php?href=https%3A%2F%2Fwww.facebook.com%2Fpermalink.php%3Fstory_fbid%3Dpfbid02unDHX6SXwKCCCfpx8DUXKnRUMqhFYLAMPTotTe1L5KrPkDPkTfPT2MX1YsUQHF7xl%26id%3D100068789642989&show_text=true&width=500" width="500" height="787" style="border:none;overflow:hidden" scrolling="no" frameborder="0" allowfullscreen="true" allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share"></iframe>
+    <iframe src="https://www.facebook.com/plugins/video.php?height=476&href=https%3A%2F%2Fwww.facebook.com%2Freel%2F1855994718422380%2F&show_text=true&width=267&t=0" width="267" height="591" style="border:none;overflow:hidden" scrolling="no" frameborder="0" allowfullscreen="true" allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share" allowFullScreen="true"></iframe>
+    <iframe src="https://www.facebook.com/plugins/video.php?height=476&href=https%3A%2F%2Fwww.facebook.com%2Freel%2F1833965177358195%2F&show_text=true&width=267&t=0" width="267" height="591" style="border:none;overflow:hidden" scrolling="no" frameborder="0" allowfullscreen="true" allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share" allowFullScreen="true"></iframe>
+    <iframe src="https://www.facebook.com/plugins/video.php?height=476&href=https%3A%2F%2Fwww.facebook.com%2Freel%2F1625498782152513%2F&show_text=true&width=267&t=0" width="267" height="591" style="border:none;overflow:hidden" scrolling="no" frameborder="0" allowfullscreen="true" allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share" allowFullScreen="true"></iframe>
+    <iframe src="https://www.facebook.com/plugins/video.php?height=476&href=https%3A%2F%2Fwww.facebook.com%2Freel%2F1221092119941997%2F&show_text=true&width=267&t=0" width="267" height="591" style="border:none;overflow:hidden" scrolling="no" frameborder="0" allowfullscreen="true" allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share" allowFullScreen="true"></iframe>
+  </section>
+
+  <!-- CONTACT -->
+  <section id="contact">
+    <h2>Contact Us</h2>
+    <div class="card">
+      <p><strong>WhatsApp Contacts:</strong></p>
+      <p><a href="https://wa.me/260770287940" target="_blank">+260 770 287940</a></p>
+      <p><a href="https://wa.me/260779971486" target="_blank">+260 779 971486</a></p>
+      <p><a href="https://wa.me/260979918138" target="_blank">+260 979 918138</a></p>
+
+      <p><strong>Email:</strong></p>
+      <p><a href="mailto:soulsforchrist@gmail.com">soulsforchrist@gmail.com</a></p>
+    </div>
+  </section>
+
+  <!-- LOCATION -->
+  <section id="location">
+    <h2>Church Location</h2>
+    <div class="card">
+      <p>kamwala south, off Ring Road, Lusaka, Zambia</p>
+      <p>Sunday Services: 08:30 & 14:30</p>
+      <p>Midweek Service:  Tuesday & Friday 14:00</p>
+      <p>Morning Glory:  Monday - Friday 06:00</p>
+      <iframe src="https://www.google.com/maps/embed?pb=!1m24!1m12!1m3!1d25679.862085412642!2d28.27701586117625!3d-15.43217128140243!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!4m9!3e6!4m3!3m2!1d-15.4210148!2d28.3111258!4m3!3m2!1d-15.4401592!2d28.2916086!5e1!3m2!1sen!2szm!4v1769886026020!5m2!1sen!2szm" width="450" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+    </div>
+  </section>
+
+</div>
+
+<script>
+  const sections = document.querySelectorAll('section');
+  const navLinks = document.getElementById('navLinks');
+  let testimonies = JSON.parse(localStorage.getItem('testimonies')) || [];
+  const ADMIN_PASSWORD = 'faith123';
+
+  function toggleMenu() {
+    navLinks.classList.toggle('show');
+  }
+
+  function showSection(id) {
+    sections.forEach(s => s.classList.remove('active'));
+    document.getElementById(id).classList.add('active');
+    navLinks.classList.remove('show');
+  }
+
+  function submitTestimony() {
+    const name = document.getElementById('name').value.trim();
+    const text = document.getElementById('testimonyText').value.trim();
+    const file = document.getElementById('media').files[0];
+
+    if (!name || !text) return alert('Please fill all fields');
+
+    if (file) {
+      const reader = new FileReader();
+      reader.onload = e => {
+        testimonies.push({ name, text, media: e.target.result, type: file.type, approved: false });
+        localStorage.setItem('testimonies', JSON.stringify(testimonies));
+        alert('Testimony submitted for approval');
+        location.reload();
+      };
+      reader.readAsDataURL(file);
+    } else {
+      testimonies.push({ name, text, approved: false });
+      localStorage.setItem('testimonies', JSON.stringify(testimonies));
+      alert('Testimony submitted for approval');
+      location.reload();
+    }
+  }
+
+  function renderTestimonies() {
+    const box = document.getElementById('approvedTestimonies');
+    box.innerHTML = '';
+    testimonies.filter(t => t.approved).forEach(t => {
+      const div = document.createElement('div');
+      div.className = 'card';
+      div.innerHTML = `<strong>${t.name}</strong><p>${t.text}</p>`;
+      if (t.media) {
+        if (t.type && t.type.startsWith('video')) div.innerHTML += `<video controls src="${t.media}"></video>`;
+        else div.innerHTML += `<img src="${t.media}" />`;
+      }
+      box.appendChild(div);
+    });
+  }
+
+  function adminLogin() {
+    const pwd = prompt('Enter admin password');
+    if (pwd !== ADMIN_PASSWORD) return alert('Access denied');
+    showAdminPanel();
+  }
+
+  function showAdminPanel() {
+    const panel = document.createElement('div');
+    panel.className = 'admin-panel';
+    panel.innerHTML = '<h3>Admin Panel</h3>';
+
+    testimonies.forEach((t, i) => {
+      panel.innerHTML += `
+        <div class="card">
+          <strong>${t.name}</strong>
+          <p>${t.text}</p>
+          <p>Status: ${t.approved ? 'Approved' : 'Pending'}</p>
+          <button onclick="approve(${i})">Approve</button>
+          <button onclick="removeTestimony(${i})">Delete</button>
+        </div>`;
+    });
+
+    document.getElementById('testimonies').appendChild(panel);
+  }
+
+  function approve(i) {
+    testimonies[i].approved = true;
+    localStorage.setItem('testimonies', JSON.stringify(testimonies));
+    location.reload();
+  }
+
+  function removeTestimony(i) {
+    testimonies.splice(i, 1);
+    localStorage.setItem('testimonies', JSON.stringify(testimonies));
+    location.reload();
+  }
+
+  renderTestimonies();
+</script>
+</body>
+</html>
